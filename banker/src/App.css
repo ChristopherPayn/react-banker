@@ -1,0 +1,107 @@
+.form-container {
+    margin: 1em auto;
+    width: 80%;
+}
+
+.add-player-form,
+.transaction-form {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+    flex-direction: column;
+}
+
+.add-player-form label {
+    margin: 0;
+}
+
+.add-player-form input {
+    border-radius: 0.5em;
+    vertical-align: middle;
+    margin-bottom: 1em;
+    padding: 1em;
+    border: 1px solid #ddd;
+}
+
+.add-player-form button {
+    border-radius: 0.5em;
+    padding: 0.7em;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+}
+
+.add-player-form button:hover {
+    background-color: royalblue;
+}
+
+.player-list {
+    padding: 0;
+    width: 80vw;
+    margin: 2em auto;
+}
+
+.player-list-row {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: rgb(187, 187, 187) 1px solid;
+    padding: 0.5em 2em;
+}
+
+.player-list-row.header {
+    color: white;
+    background-color: black;
+}
+
+.player-list-row.header .player-list-delete {
+    cursor: default;
+}
+
+.player-list-row:last-of-type {
+    border-bottom: none;
+}
+
+.player-list-cell {
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-shrink: 0;
+}
+
+.player-list-delete {
+    cursor: pointer;
+}
+
+.toast {
+    margin-top: 1em;
+    border-radius: 0.5em;
+    padding: 1em 1em;
+    color: white;
+    font-weight: bold;
+}
+
+.toast.show {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.toast.hidden {
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.toast-error {
+    border: 1px solid #ddd;
+    background-color: rgb(177, 27, 27);
+}
+
+.toast-success {
+    border: 1px solid #ddd;
+    background-color: rgb(9, 160, 52);
+}
+
+/* utility */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
