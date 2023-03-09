@@ -2,6 +2,7 @@ import { useState } from 'react';
 import AddPlayer from './components/AddPlayer';
 import Transaction from './components/Transaction';
 import ViewPlayers from './components/ViewPlayers';
+import Settings from './components/Settings';
 import Nav from './components/Nav';
 import './App.css';
 
@@ -20,13 +21,15 @@ function App() {
         return <Transaction />;
       case 'players':
         return <ViewPlayers />;
+      case 'settings':
+        return <Settings />;
       default:
     }
   };
 
   return (
     <>
-      <Nav navigate={changeView}/>
+      <Nav navigate={changeView} />
       {renderView()}
     </>
   );

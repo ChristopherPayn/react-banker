@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import * as ds from '../DataStore';
+import styles from './styles/Transaction.module.css';
+import globalStyles from './styles/Global.module.css';
 
 const Transaction = () => {
     const [foundFromPlayer, setFoundFromPlayer] = useState(null);
@@ -24,9 +26,9 @@ const Transaction = () => {
     };
 
     return (
-        <div className='form-container' onSubmit={handleSubmit}>
-            <form className='transaction-form'>
-                <h1>Transactions</h1>
+        <div className={globalStyles.formContainer} onSubmit={handleSubmit}>
+            <h1 className={`${globalStyles.formHeader} ${styles.header}`} id={styles.transactionsHeader}>Transactions</h1>
+            <form className={globalStyles.transactionForm}>
                 <h2>From:</h2>
                 <label htmlFor='account-number'>Account number:</label>
                 <input

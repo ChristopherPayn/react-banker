@@ -1,0 +1,17 @@
+.toast {
+    margin-top: 1em;
+    border-radius: 0.5em;
+    padding: 1em 1em;
+    color: white;
+    font-weight: bold;
+}
+
+.toast.show {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.toast.hidden {
+    opacity: 0;
+    transition: opacity 2s;
+}

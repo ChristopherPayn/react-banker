@@ -1,24 +1,26 @@
-import React, { useState, useEffect, useRef } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import styles from './styles/Toast.module.css';
 
 const messaages = {
-    error: 'Player not added. Account number already in use',
     success: 'Player successfully added',
+    existsError: 'Player not added. Account number already in use',
+    cannotUseError: 'Player not added. This account number cannot be used',
 };
 
-const Toast = ({type}) => {
+const Toast = ({ type }) => {
     const [visible, setVisible] = useState(false);
-    const toastType = useRef(type);
-    
+
     useEffect(() => {
-        setVisible(true);
-        setTimeout(() => {
-            setVisible(false)
-        }, 4000);
-    }, [toastType]);
+        if (Object.keys(messaages).includes(type)) {
+            setVisible(true);
+            setTimeout(() => {
+                setVisible(false)
+            }, 4000);
+        }
+    }, [type]);
 
     return (
-        <div className={`toast toast-${type} ${visible ? 'show' : 'hidden'}`}>{messaages[type]}</div>
+        <div className={`${styles.toast} toast-${type} ${visible ? 'show' : 'hidden'}`}>{messaages[type] || '--'}</div>
     );
 }
 

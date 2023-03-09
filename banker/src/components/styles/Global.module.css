@@ -1,0 +1,47 @@
+.formContainer {
+    margin: 1em auto;
+    max-width: 600px;
+}
+
+.formHeader {
+    max-width: 80vw;
+    margin-top: 0;
+}
+
+.addPlayerForm,
+.transactionForm {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+    flex-direction: column;
+    margin: auto;
+    max-width: 80vw;
+}
+
+.addPlayerForm label,
+.transactionForm label {
+    margin: 0;
+}
+
+.addPlayerForm input,
+.transactionForm input {
+    border-radius: 0.5em;
+    vertical-align: middle;
+    margin-bottom: 1em;
+    padding: 1em;
+    border: 1px solid #ddd;
+}
+
+.addPlayerForm button,
+.transactionForm button {
+    border-radius: 0.5em;
+    padding: 0.7em;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+    cursor: pointer;
+}
+
+.addPlayerForm button:hover {
+    background-color: royalblue;
+}

@@ -1,39 +1,77 @@
 import React, { useState, useEffect } from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
-// import { getPlayers, deletePlayer } from '../DataStore';
+import { FaTrashAlt, FaLock, FaLockOpen } from 'react-icons/fa';
 import * as ds from '../DataStore';
+import styles from './styles/ViewPlayers.module.css';
+
+const FA_BLACK = 'rgba(0, 0, 0, 0)';
+const FA_WHITE = 'rgba(255, 255, 255, 255)';
 
 const ViewPlayers = () => {
     const [players, setPlayers] = useState();
+    const [hidePins, setHidePins] = useState();
+
+    const unlockPins = () => {
+        const enteredPassword = prompt("Enter admin password", "");
+        if (ds.verifyAdmin(enteredPassword)) {
+            setHidePins(false);
+        } else {
+            alert('Incorrect admin password')
+        }
+    };
+
+    const lockPins = () => {
+        if (ds.isAdminEnabled()) setHidePins(true);
+    };
+
+    // TODO: get admin password as boolean from local storage and check whether pins are visible or not
+    // and if not then allow to enter password to view the pins
 
     useEffect(() => {
         setPlayers(ds.getPlayers());
-        console.log('players', players);
+        setHidePins(ds.isAdminEnabled());
+        // console.log('players', players);
     }, []);
 
     return (
         <div>
-            <ul className='player-list'>
-                <li className='player-list-row header'>
-                    <span className='player-list-cell'>Account number</span>
-                    <span className='player-list-cell'>Name</span>
-                    <span className='player-list-cell'>PIN</span>
-                    <span className='player-list-delete'>
+            <ul className={styles.playerList}>
+                <li className={styles.playerListRowHeader}>
+                    <span className={styles.playerListCell}>Account number</span>
+                    <span className={styles.playerListCell}>Name</span>
+                    <span className={styles.playerListCell}>
+                        PIN {
+                            ds.isAdminEnabled() && hidePins ?
+                            <FaLock
+                                className={styles.pinLockIcon}
+                                color={FA_WHITE}
+                                onClick={unlockPins}
+                            /> :
+                            <FaLockOpen
+                                className={styles.pinLockIcon}
+                                title='PINs can be hidden if admin password is enabled in Settings'
+                                color={FA_WHITE}
+                                onClick={lockPins}
+                        />
+                        }
+                    </span>
+                    <span className={styles.playerListDelete}>
                         <FaTrashAlt
-                            color='rgba(0, 0, 0, 0)'
+                            color={FA_BLACK}
                         />
                     </span>
                 </li>
                 {players && players.map(player => (
                     <li
                         key={player.accountNumber}
-                        className='player-list-row'
+                        className={styles.playerListRow}
                     >
-                        <span className='player-list-cell'>{player.accountNumber}</span>
-                        <span className='player-list-cell'>{player.name}</span>
-                        <span className='player-list-cell'>{player.pin}</span>
+                        <span className={styles.playerListCell}>{player.accountNumber}</span>
+                        <span className={styles.playerListCell}>{player.name}</span>
+                        <span className={styles.playerListCell}>
+                            {ds.isAdminEnabled() && hidePins ? '****' : player.pin}
+                        </span>
                         <span
-                            className='player-list-delete'
+                            className={styles.playerListDelete}
                             onClick={() => {
                                 console.log('delete clicked');
                                 ds.deletePlayer(player.id);

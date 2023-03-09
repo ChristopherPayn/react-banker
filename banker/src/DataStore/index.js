@@ -4,3 +4,6 @@ export * from './deletePlayer';
 export * from './getPlayer';
 export * from './getPlayers';
 export * from './updatePlayers';
+export * from './isAdminEnabled';
+export * from './verifyAdmin';
+export * from './getAdminPassword';

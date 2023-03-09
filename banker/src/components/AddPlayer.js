@@ -1,17 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { AccountNumberInput, NameInput, PinInput } from './AddPlayerForm';
 import Toast from './Toast';
 import * as ds from '../DataStore';
+import styles from './styles/AddPlayer.module.css';
+import globalStyles from './styles/Global.module.css';
+
+const scannableHint = 'Scan or type account number';
 
 const AddPlayer = () => {
     const [accountDetails, setAccountDetails] = useState({
         id: '',
-        accountNumber: '',
+        accountNumber: window.innerWidth <= 600 ? scannableHint : '',
         name: '',
         pin: '',
     });
     const [players, setPlayers] = useState([]);
     const [toastType, setToastType] = useState('');
-    const nameInputRef = useRef(null);
+    const accNumInputRef = useRef(null);
     const { accountNumber, name, pin } = accountDetails;
 
     useEffect(() => {
@@ -31,11 +36,19 @@ const AddPlayer = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (pin.length === 4) {
+        if (pin.length === 4 && accountNumber !== scannableHint) {
             const playerAdded = ds.addPlayer(accountDetails);
-            setToastType(playerAdded ? 'success' : 'error');
+            setToastType(playerAdded ? 'success' : 'existsError');
+            setTimeout(() => {
+                setToastType('');
+            }, 6000);
             setPlayers(ds.getPlayers());
-            resetForm();
+            playerAdded && resetForm();
+        } else {
+            setToastType('cannotUseError');
+            setTimeout(() => {
+                setToastType('');
+            }, 6000);
         }
     };
 
@@ -46,70 +59,37 @@ const AddPlayer = () => {
             name: '',
             pin: '',
         });
-        nameInputRef.current.focus();
+        accNumInputRef.current.focus();
     };
 
     return (
-        <div className='form-container'>
-            {/* TODO: make it so that when adding new player, it checks existing player account numbers so there are no duplicates */}
-            <h1>Add a Player</h1>
-            <form className='add-player-form' onSubmit={handleSubmit}>
-                <label htmlFor='account-number'>Account number:</label>
-                <input
-                    ref={nameInputRef}
-                    id='account-number'
-                    type="text"
-                    name='accountNumber'
+        <div className={globalStyles.formContainer}>
+            <form className={globalStyles.addPlayerForm} onSubmit={handleSubmit}>
+                <h1 className={globalStyles.formHeader}>Add a Player</h1>
+                <AccountNumberInput
+                    inputRef={accNumInputRef}
                     value={accountNumber}
-                    required
-                    onChange={handleInputChange}
-                    placeholder="Enter account number"
+                    handleInputChange={handleInputChange}
                 />
-                <label htmlFor='name'>Name:</label>
-                <input
-                    id='name'
-                    type="text"
-                    name="name"
+                <NameInput
                     value={name}
-                    required
-                    onChange={handleInputChange}
-                    placeholder="Enter your name"
+                    handleInputChange={handleInputChange}
                 />
-                <label htmlFor='pin'>Pin (must be 4 digits):</label>
-                <input
-                    id='pin'
-                    type="number"
-                    name='pin'
+                <PinInput
                     value={pin}
-                    min={0}
-                    required
-                    maxLength={4}
-                    onChange={(e => handleInputChange(e, 4))}
+                    handleInputChange={(e => handleInputChange(e, 4))}
                 />
                 <button type="submit">Add</button>
+                <Toast
+                    type={toastType}
+                />
             </form>
-            <Toast
-                type={toastType}
-            />
-            {/* <div>
+            <div id={styles.currentPlayers}>
+                Current Players:
                 <ul>
-                    {players.map(player => (
-                        <li key={player.accountNumber}>
-                            {player.accountNumber}
-                            <br />
-                            {player.name}
-                            <br />
-                            {player.pin}
-                        </li>
-                    ))}
+                    {players.map((player, i) => <li key={i}>{player.name}</li>)}
                 </ul>
-            </div> */}
-            {/* <button onClick={() => ds.addPlayer({ accountNumber: '1234567890', name: 'Martif', pin: '1234' })}>Add Player</button> */}
-            {/* <button onClick={() => console.log(ds.getPlayers())}>Get Players</button> */}
-            <button onClick={() => ds.clearPlayers()} disabled>Clear Players</button>
-            {/* <button onClick={() => console.log(ds.accountNumberInUse('123'))}>log all players</button> */}
-            {/* <button onClick={() => console.log(ds.getPlayer('1234567890'))}>Get One Player</button> */}
-            {/* <button onClick={() => console.log(ds.deletePlayer('af5bee80-9990-4b2a-b448-8a75b94413f5'))}>Delete Player</button> */}
+            </div>
         </div>
     );
 }

@@ -1,0 +1,31 @@
+nav {
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav div {
+    width: 100%;
+    border-left: rgb(61, 61, 61) 1px solid;
+    padding: 1em 0;
+    text-align: center;
+    background-color: rgb(213, 213, 213);
+    cursor: pointer;
+    transition: background-color 500ms;
+}
+
+nav div:last-of-type {
+    width: 12em;
+}
+
+nav div:hover {
+    background-color: rgb(168, 168, 168);
+}
+
+nav div:first-child {
+    border-left: none;
+}
+
+.navActive {
+    background-color: rgb(168, 168, 168);
+}
