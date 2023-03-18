@@ -7,3 +7,4 @@ export * from './updatePlayers';
 export * from './isAdminEnabled';
 export * from './verifyAdmin';
 export * from './getAdminPassword';
+export * from './performTransaction';

@@ -2,6 +2,7 @@ nav {
     width: 100vw;
     display: flex;
     justify-content: space-evenly;
+    user-select: none;
 }
 
 nav div {

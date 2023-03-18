@@ -1,10 +1,15 @@
 import { getPlayers, updatePlayers } from './';
 import { v4 as uuidv4 } from 'uuid';
 
+const startingBalance = () => {
+    const retrievedBalance = JSON.parse(localStorage.getItem('startingBalance'));
+    console.log('retrievedBalance', retrievedBalance);
+    const parsedBalance = parseInt(retrievedBalance);
+    return parsedBalance || 0;
+};
+
 export const accountNumberInUse = accNum => {
     const existingAccounts = getPlayers().map(player => player.accountNumber);
-    console.log('accNum', accNum);
-    console.log('existingAccounts', existingAccounts);
     return !!existingAccounts.find(existingAccNum => existingAccNum === accNum);
 };
 
@@ -16,6 +21,7 @@ export const addPlayer = data => {
         accountNumber,
         name,
         pin,
+        balance: startingBalance(),
     };
     const players = getPlayers();
     players.push(newPlayer);

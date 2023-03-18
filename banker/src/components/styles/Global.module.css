@@ -42,6 +42,7 @@
     cursor: pointer;
 }
 
-.addPlayerForm button:hover {
+.addPlayerForm button:hover,
+.transactionForm button:hover {
     background-color: royalblue;
 }

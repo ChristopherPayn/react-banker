@@ -1,0 +1,25 @@
+.accordionTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: #d5d5d5;
+}
+
+.accordionTitle:hover {
+  background-color: #a8a8a8;
+}
+
+.accordionTitle,
+.accordionContent {
+  padding: 1rem;
+}
+
+.accordionContent {
+  background-color: #c1c1c1;
+}
+
+.playerName {
+  font-weight: bold;
+  text-decoration: underline;
+}
