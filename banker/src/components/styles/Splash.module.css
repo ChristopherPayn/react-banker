@@ -1,0 +1,23 @@
+.splashLogoContainer {
+  max-width: min(600px, 80vw);
+  margin: 4em auto;
+}
+
+.splashLogoContainer>img {
+  position: relative;
+  max-width: 80vw;
+  animation-name: logobounce;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes logobounce {
+  from {
+      top: 0;
+  }
+  to {
+      top: 1em;
+  }
+}

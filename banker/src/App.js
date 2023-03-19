@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Splash from './components/Splash';
 import AddPlayer from './components/AddPlayer';
 import Transaction from './components/Transaction';
 import ViewPlayers from './components/ViewPlayers';
@@ -7,7 +8,7 @@ import Nav from './components/Nav';
 import './App.css';
 
 function App() {
-  const [view, setView] = useState('addPlayer');
+  const [view, setView] = useState('');
 
   const changeView = viewName => {
     setView(viewName);
@@ -24,6 +25,7 @@ function App() {
       case 'settings':
         return <Settings />;
       default:
+        return <Splash />
     }
   };
 
