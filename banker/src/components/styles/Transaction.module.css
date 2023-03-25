@@ -1,3 +1,30 @@
 #transactionsHeader {
     margin: 0 auto;
 }
+
+.transactionFormInputContainer {
+    display: flex;
+}
+
+.transactionFormInput {
+    flex: 1;
+}
+
+.transactionFormBank {
+    border-radius: 0.5em;
+    width: 3em;
+    height: 3em;
+    margin-bottom: 1em;
+    margin-left: 0.5em;
+    color: rgb(61, 61, 61);
+    cursor: pointer;
+}
+
+.transactionFormBank:hover {
+    background-color: rgb(213, 213, 213);
+    transition: background-color 500ms;
+}
+
+.transactionFormBankIcon {
+    font-size: 3em;
+}
