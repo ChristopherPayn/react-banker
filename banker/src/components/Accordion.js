@@ -70,7 +70,13 @@ const Accordion = ({ changeView }) => {
             deleteComponent={
               ds.isAdminEnabled() && hidePrivate ?
               '' :
-              <span><FaTrashAlt className={styles.playerListDelete} onClick={() => deletePlayer(id, name)}/></span>
+              <span>
+                <FaTrashAlt
+                  className={styles.playerListDelete}
+                  onClick={() => deletePlayer(id, name)}
+                  title='Delete player'
+                />
+              </span>
             }
             changeView={changeView}
             key={i}

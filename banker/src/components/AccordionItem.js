@@ -30,6 +30,7 @@ const AccordionItem = ({ accountNumber, name, balance, pin, deleteComponent, cha
             <TbFileDatabase
               className={styles.playerListTransactions}
               onClick={navigateToHistory}
+              title='View transaction history'
             />
           </span>
         </div>

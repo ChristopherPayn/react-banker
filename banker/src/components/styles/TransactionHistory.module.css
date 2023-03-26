@@ -1,0 +1,35 @@
+.transactionHistoryContainer {
+    margin: auto;
+    width: 600px;
+    max-width: 80vw;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.transactionHistoryHeader {
+    margin-top: 1em;
+    font-size: 1.5em;
+}
+
+.transactionHistoryHeader + hr {
+    border: 1px solid black;
+}
+
+.lineItemHeader,
+.lineItem {
+    display: flex;
+    align-items: center;
+}
+
+.lineItemHeader + hr {
+    border-top: 1px dashed black;
+}
+
+.lineItemHeader>span,
+.lineItem>span {
+    width: 20vw;
+}
+
+.lineItem {
+    border-bottom: 1px dotted rgb(200, 200, 200);
+    padding: 0.25em 0;
+}

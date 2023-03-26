@@ -30,3 +30,9 @@ nav div:first-child {
 .navActive {
     background-color: rgb(168, 168, 168);
 }
+
+@media print {
+    nav {
+        display: none;
+    }
+}

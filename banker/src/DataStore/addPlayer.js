@@ -22,7 +22,7 @@ export const addPlayer = data => {
         pin,
         balance: startingBalance(),
         transactions: [{
-            from: 'BANK (starting balance)',
+            from: 'BANK',
             to: name,
             amount: startingBalance(),
             currentBalance: startingBalance(),
