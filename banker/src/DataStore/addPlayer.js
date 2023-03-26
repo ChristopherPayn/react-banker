@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 const startingBalance = () => {
     const retrievedBalance = JSON.parse(localStorage.getItem('startingBalance'));
-    console.log('retrievedBalance', retrievedBalance);
     const parsedBalance = parseInt(retrievedBalance);
     return parsedBalance || 0;
 };
@@ -22,6 +21,12 @@ export const addPlayer = data => {
         name,
         pin,
         balance: startingBalance(),
+        transactions: [{
+            from: 'BANK (starting balance)',
+            to: name,
+            amount: startingBalance(),
+            currentBalance: startingBalance(),
+        }],
     };
     const players = getPlayers();
     players.push(newPlayer);

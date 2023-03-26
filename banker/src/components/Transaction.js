@@ -118,7 +118,7 @@ const Transaction = () => {
                 />
                 {(foundFromPlayer && foundToPlayer && transactionAmount !== 0 &&
                     <div>{foundFromPlayer?.name || 'The bank'} will pay {foundToPlayer?.name || 'the bank'} the amount of {transactionAmount}</div>
-                ) || <div>Awaiting payment amount</div>}
+                ) || <div>Awaiting payment amount...</div>}
                 <br />
                 <button type="submit">Confirm and pay</button>
             </form>

@@ -19,6 +19,17 @@
   background-color: #c1c1c1;
 }
 
+.playerListTransactions {
+  color: rgb(32, 32, 126);
+  cursor: pointer;
+  font-size: 2em;
+  margin: 0.25em 0 0 0.25em;
+}
+
+.playerListTransactions:hover {
+  color: rgb(0, 0, 220);
+}
+
 .playerName {
   font-weight: bold;
   text-decoration: underline;

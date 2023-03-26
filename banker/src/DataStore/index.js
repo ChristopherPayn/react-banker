@@ -3,6 +3,7 @@ export * from './clearPlayers';
 export * from './deletePlayer';
 export * from './getPlayer';
 export * from './getPlayers';
+export * from './historyTarget';
 export * from './updatePlayers';
 export * from './isAdminEnabled';
 export * from './verifyAdmin';

@@ -4,7 +4,14 @@
 }
 
 .playerListDelete {
+  color: rgb(128, 32, 32);
   cursor: pointer;
+  font-size: 2em;
+  margin: 0.25em 0.25em 0 0;
+}
+
+.playerListDelete:hover {
+  color: rgb(188, 32, 32);
 }
 
 .pinLockIcon {

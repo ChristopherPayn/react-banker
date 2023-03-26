@@ -4,7 +4,7 @@ import { FaTrashAlt, FaLock, FaLockOpen } from 'react-icons/fa';
 import AccordionItem from './AccordionItem';
 import styles from './styles/Accordion.module.css';
 
-const Accordion = () => {
+const Accordion = ({ changeView }) => {
   const [players, setPlayers] = useState();
   const [hidePrivate, setHidePrivate] = useState();
 
@@ -70,8 +70,9 @@ const Accordion = () => {
             deleteComponent={
               ds.isAdminEnabled() && hidePrivate ?
               '' :
-              <div><FaTrashAlt className={styles.playerListDelete} onClick={() => deletePlayer(id, name)}/></div>
+              <span><FaTrashAlt className={styles.playerListDelete} onClick={() => deletePlayer(id, name)}/></span>
             }
+            changeView={changeView}
             key={i}
           />
         ))}

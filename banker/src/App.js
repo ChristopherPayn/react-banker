@@ -5,6 +5,7 @@ import Transaction from './components/Transaction';
 import ViewPlayers from './components/ViewPlayers';
 import Settings from './components/Settings';
 import Nav from './components/Nav';
+import TransactionHistory from './components/TransactionHistory';
 import './App.css';
 
 function App() {
@@ -21,9 +22,11 @@ function App() {
       case 'transaction':
         return <Transaction />;
       case 'players':
-        return <ViewPlayers />;
+        return <ViewPlayers changeView={changeView}/>;
       case 'settings':
         return <Settings />;
+      case 'history':
+        return <TransactionHistory />;
       default:
         return <Splash />
     }

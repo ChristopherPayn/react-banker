@@ -1,8 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { TbFileDatabase } from 'react-icons/tb';
+import * as ds from '../DataStore';
 import styles from './styles/AccordionItem.module.css';
 
-const AccordionItem = ({ accountNumber, name, balance, pin, deleteComponent }) => {
+const AccordionItem = ({ accountNumber, name, balance, pin, deleteComponent, changeView }) => {
   const [isActive, setIsActive] = useState(false);
+
+  const navigateToHistory = () => {
+    ds.setHistoryTarget(accountNumber);
+    changeView('history');
+  };
   
   return (
     <div>
@@ -19,6 +26,12 @@ const AccordionItem = ({ accountNumber, name, balance, pin, deleteComponent }) =
           <div>Balance: {balance}</div>
           <div>Pin: {pin}</div>
           {deleteComponent}
+          <span>
+            <TbFileDatabase
+              className={styles.playerListTransactions}
+              onClick={navigateToHistory}
+            />
+          </span>
         </div>
       }
     </div>

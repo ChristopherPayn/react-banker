@@ -1,21 +1,19 @@
-import { getPlayers } from "./getPlayers";
-import { updatePlayers } from "./updatePlayers";
+import { getPlayers } from './getPlayers';
+import { updatePlayers } from './updatePlayers';
+import { createTransaction } from './createTransaction';
 
 export const performTransaction = (playerFrom, playerTo, amount) => {
   const allPlayers = getPlayers();
-  console.log('allPlayers', allPlayers);
-  console.log('playerFrom', playerFrom);
-  console.log('playerTo', playerTo);
-  console.log('amount', amount);
 
   allPlayers.forEach(player => {
     if (player.id === playerFrom.id) {
       player.balance = parseInt(player.balance) - parseInt(amount);
+      player.transactions.push(createTransaction(player.name, playerTo.name, amount, player.balance));
     }
     if (player.id === playerTo.id) {
       player.balance = parseInt(player.balance) + parseInt(amount);
+      player.transactions.push(createTransaction(playerFrom.name, player.name, amount, player.balance));
     }
   });
   updatePlayers(allPlayers);
-  console.log('allPlayers AFTER', allPlayers);
 };

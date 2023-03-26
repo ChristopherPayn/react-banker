@@ -69,7 +69,6 @@ const ViewPlayers = () => {
                         <span
                             className={styles.playerListDelete}
                             onClick={() => {
-                                console.log('delete clicked');
                                 ds.deletePlayer(player.id);
                                 setPlayers(ds.getPlayers());
                             }}
