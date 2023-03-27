@@ -22,11 +22,11 @@ function App() {
       case 'transaction':
         return <Transaction />;
       case 'players':
-        return <ViewPlayers changeView={changeView}/>;
+        return <ViewPlayers changeView={changeView} />;
       case 'settings':
         return <Settings />;
       case 'history':
-        return <TransactionHistory />;
+        return <TransactionHistory changeView={changeView} />;
       default:
         return <Splash />
     }

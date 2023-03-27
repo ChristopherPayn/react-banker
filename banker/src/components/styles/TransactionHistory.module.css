@@ -5,6 +5,16 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+.transactionHistoryBack {
+    color: blue;
+    cursor: pointer;
+}
+
+.transactionHistoryBack:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .transactionHistoryHeader {
     margin-top: 1em;
     font-size: 1.5em;
