@@ -1,4 +1,5 @@
 import React from 'react';
+import TransactionHistoryLineItem from './TransactionHistoryLineItem';
 import * as ds from '../DataStore';
 import styles from './styles/TransactionHistory.module.css';
 
@@ -21,19 +22,16 @@ const TransactionHistory = ({ changeView }) => {
       <div className={styles.transactionHistoryHeader}>{historyTarget.name}'s Transaction History</div>
       <hr />
       <div className={styles.lineItemHeader}>
-        <span>with</span>
-        <span>type</span>
-        <span>amount</span>
-        <span>current</span>
+        {['with', 'type', 'amount', 'current'].map(string => <span>{string}</span>)}
       </div>
       <hr />
       {historyTarget.transactions.map((transaction, i) => (
-        <div className={styles.lineItem} key={i}>
-          <span>{transaction.from === historyTarget.name ? transaction.to : transaction.from}</span>
-          <span>{transaction.from === historyTarget.name ? 'out' : 'in'}</span>
-          <span>{transaction.amount}</span>
-          <span>{transaction.currentBalance}</span>
-        </div>
+        <TransactionHistoryLineItem
+          transaction={transaction}
+          historyTarget={historyTarget}
+          className={styles.lineItem}
+          key={i}
+        />
       ))}
     </div>
   );
