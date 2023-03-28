@@ -43,3 +43,9 @@
     border-bottom: 1px dotted rgb(200, 200, 200);
     padding: 0.25em 0;
 }
+
+@media print {
+    .transactionHistoryBack {
+        display: none;
+    }
+}
